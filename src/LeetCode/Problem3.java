@@ -10,31 +10,20 @@ import java.util.Set;
  */
 public class Problem3 {
     public int lengthOfLongestSubstring(String s) {
-        Set<Character> set=new HashSet<>();
-        int left=0;
-        int right=0;
-        int length=0;
-        int maxlength=0;
-        while(right<s.length()){
-            if(!set.contains(s.charAt(right))){
-                set.add(s.charAt(right));
-                length++;
-                if (length>maxlength){
-                    maxlength=length;
-                }
-                right++;
+        Set<Character> set = new HashSet<>();
+        int left = 0, maxLen = 0;
+
+        for (int right = 0; right < s.length(); right++) {
+            // 遇到重复，收缩左边界
+            while (set.contains(s.charAt(right))) {
+                set.remove(s.charAt(left));
+                left++;
             }
-            else {
-                while (set.contains(s.charAt(right))){
-                    set.remove(s.charAt(left));
-                    left++;
-                    length--;
-                }
-                set.add(s.charAt(right));
-                length++;
-                right++;
-            }
+            // 加入当前字符
+            set.add(s.charAt(right));
+            // 直接计算窗口长度，无需单独维护length变量
+            maxLen = Math.max(maxLen, right - left + 1);
         }
-        return maxlength;
-}
+        return maxLen;
+    }
 }

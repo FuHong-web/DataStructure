@@ -1,6 +1,6 @@
 package LeetCode;
 
-import Tree.TreeNode;
+
 
 /**
  * @author: Yan Tong xue
