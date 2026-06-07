@@ -15,7 +15,7 @@ public class Problem128 {
         for (int num : nums) {
             set.add(num);
         }
-        for (int num : nums) {
+        for (int num : set) {
             if (!set.contains(num - 1)) {//如果集合中，没有当前元素的前一个元素，就说明他是起始元素
                 int len = 0;
                 while (set.contains(num + len)) {

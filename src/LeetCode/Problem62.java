@@ -12,11 +12,11 @@ public class Problem62 {
     public int uniquePaths(int m, int n){
         int[][] result = new int[m][n];
         //第一列只有一种走法：一直往下走
-        for (int i=0;i<=m;i++){
+        for (int i=0;i<m;i++){
             result[i][0]=1;
         }
         //第一行只有一种走法：一直往右走
-        for (int j=0;j<=n;j++){
+        for (int j=0;j<n;j++){
             result[0][j]=1;
         }
         for (int i = 1; i <m; i++) {
