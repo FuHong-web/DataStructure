@@ -3,7 +3,7 @@ package LeetCode;
 /**
  * @author: Yan Tong xue
  * @Created:2026/5/5 19:14
- * @desc:第42题：接雨水（双指针）
+ * @desc:第42题：接雨水（双指针）单个位置能存的水 = min(左侧最高墙, 右侧最高墙) - 当前高度
  */
 public class Problem42 {
     public int trap(int[] height) {
