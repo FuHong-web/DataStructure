@@ -13,19 +13,15 @@ public class p283 {
     当 nums[i] 不为 0 时，将其复制到 nums[j]，然后 j++
     当 nums[i] 为 0 时，跳过，j 不动
     * */
-    private void moveZero(int[] nums) {
-        if (nums.length == 0) {
-            return;
-        }
+    public void moveZeroes(int[] nums) {
         int j = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != 0) {
-                nums[j] = nums[i];
+        for (int i = 0;i<nums.length;i++) {
+            while (nums[i] != 0) {
+                int temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
                 j++;
             }
-        }
-        for (int m = j;m < nums.length;m++) {
-            nums[m] = 0;
         }
     }
 }

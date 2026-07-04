@@ -25,5 +25,6 @@ public class p42 {
         }
 
         return result;
-    }}
+    }
+}
 

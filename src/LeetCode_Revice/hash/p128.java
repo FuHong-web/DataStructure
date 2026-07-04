@@ -13,7 +13,7 @@ import java.util.Set;
  * 从起点一直往后数：num+1、num+2… 存在就长度 + 1
  * 记录最大长度
  */
-public class p28 {
+public class p128 {
     public int longestConsecutive(int[] nums) {
         int max_len = 0;
         Set<Integer> set = new HashSet<>();
