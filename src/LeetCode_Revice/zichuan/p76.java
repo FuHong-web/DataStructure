@@ -1,5 +1,8 @@
 package LeetCode_Revice.zichuan;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author: Yan Tong xue
  * @Created:2026/6/8 22:40
@@ -12,55 +15,43 @@ package LeetCode_Revice.zichuan;
  */
 public class p76 {
     public String minWindow(String s, String t) {
-        if (s == null || t == null || s.length() < t.length()) {
-            return "";
+        Map<Character, Integer> need = new HashMap<>();
+        Map<Character, Integer> window = new HashMap<>();
+        // 填充t需求
+        for (char ch : t.toCharArray()) {
+            need.put(ch, need.getOrDefault(ch, 0) + 1);
         }
-
-        // 统计 t 中字符需要的数量
-        int[] need = new int[128];
-        for (char c : t.toCharArray()) {
-            need[c]++;
-        }
-
-        int[] window = new int[128];
         int left = 0, right = 0;
-        int needCount = t.length(); // 需要匹配的总字符数
-        int minLen = Integer.MAX_VALUE;
-        int start = 0;
+        int match = 0;
+        int minStart = 0, minLen = Integer.MAX_VALUE;
 
         while (right < s.length()) {
-            char c = s.charAt(right);
+            char r = s.charAt(right);
             right++;
-
-            // 当前字符在需求里
-            if (need[c] > 0) {
-                window[c]++;
-                // 只有窗口里的数量 <= 需要的数量，才算有效匹配
-                if (window[c] <= need[c]) {
-                    needCount--;
+            if (need.containsKey(r)) {
+                window.put(r, window.getOrDefault(r, 0) + 1);
+                if (window.get(r).equals(need.get(r))) {
+                    match++;
                 }
             }
 
-            // 窗口满足条件，开始收缩左边
-            while (needCount == 0) {
-                // 更新最小窗口
-                if (right - left < minLen) {
-                    minLen = right - left;
-                    start = left;
+            // 全部匹配，收缩
+            while (match == need.size()) {
+                int curLen = right - left;
+                if (curLen < minLen) {
+                    minLen = curLen;
+                    minStart = left;
                 }
-
-                char d = s.charAt(left);
+                char l = s.charAt(left);
                 left++;
-
-                if (need[d] > 0) {
-                    if (window[d] == need[d]) {
-                        needCount++;
+                if (need.containsKey(l)) {
+                    if (window.get(l).equals(need.get(l))) {
+                        match--;
                     }
-                    window[d]--;
+                    window.put(l, window.get(l) - 1);
                 }
             }
         }
-
-        return minLen == Integer.MAX_VALUE ? "" : s.substring(start, start + minLen);
+        return minLen == Integer.MAX_VALUE ? "" : s.substring(minStart, minStart + minLen);
     }
 }
