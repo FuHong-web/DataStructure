@@ -1,11 +1,11 @@
-package LeetCode;
+package LeetCode_Revice2.dongtaiguihua;
 
 /**
  * @author: Yan Tong xue
- * @Created:2026/4/12 23:34
- * @desc:力扣第300题;最长递增子序列（动态规划）
+ * @Created:2026/7/15 10:12
+ * @desc:最长递增子序列
  */
-public class Problem300 {
+public class p300 {
     public int lengthOfLIS(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;

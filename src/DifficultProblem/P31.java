@@ -6,32 +6,31 @@ package DifficultProblem;
  * @desc:下一个排列
  */
 public class P31 {
-        public void  nextPermutation(int[] nums) {
-            int m = nums.length;
-            int  k = m -1;
-            while (k>0 && nums[k-1] >= nums[k]) {
-                k--;
-            }
-            if (k < 0) {
-                reverse(nums,0,m-1);
-            }else {
-                int t = m-1;
-                while (nums[t] <= nums[k-1]) {
-                    swap(nums,k-1,t);
-                    reverse(nums,k,m-1);
-                }
-            }
-        }
-        private void reverse (int[] nums,int left,int right) {
-            while (left < right) {
-                swap(nums,left,right);
-                left++;
-                right--;
-            }
-        }
-        private void swap(int[] nums,int i,int j) {
-            int temp = nums[i];
-            nums[i] = nums[j];
-            nums[j] = temp;
-        }
+    public void nextPermutation(int[] nums) {
+       int i;
+       for (i = nums.length -1;i >= 0;i--) {
+           if (i + 1< nums.length && nums[i] < nums[i+1]) {
+               for (int j = nums.length-1;j>i;j--) {
+                   if (nums[j] > nums[i]) {
+                       swap(nums,i,j);
+                       break;
+                   }
+               }
+               break;
+           }
+       }
+       int left = i + 1;
+       int right = nums.length -1;
+       while (left< right) {
+           swap(nums,left,right);
+            left++;
+            right--;
+       }
+
+    }
+    private void swap (int[] nums,int a,int b) {
+        int temp = nums[a];
+        nums[a] = nums[b];
+        nums[b] = temp;
+    }
 }
