@@ -1,12 +1,8 @@
-package LeetCode_Revice2.Lianbiao;
+package LeetCode_Revice3.lianbiao;
 
 import LeetCode.ListNode;
 
-/**
- * @author: Yan Tong xue
- * @Created:2026/6/23 23:41
- * @desc:合并k个升序链表
- */
+/*合并k个有序链表*/
 public class p23 {
     public ListNode mergeKLists (ListNode[] listNodes) {
         ListNode res = null;
@@ -28,5 +24,4 @@ public class p23 {
 
 
     }
-
 }

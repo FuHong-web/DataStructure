@@ -1,14 +1,12 @@
-package LeetCode;
+package LeetCode_Revice3.lianbiao;
+
+import LeetCode.ListNode;
 
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * @author: Yan Tong xue
- * @Created:2026/4/21 22:17
- * @desc:环形链表II（快慢指针）
- */
-public class Problem142 {
+/*环形链表II*/
+public class p142 {
     public ListNode detectCycle(ListNode head) {
         Set<ListNode> nodes = new HashSet<>();
         ListNode cur = head;
@@ -20,4 +18,5 @@ public class Problem142 {
             cur = cur.next;
         }
         return null;
-}}
+    }
+}

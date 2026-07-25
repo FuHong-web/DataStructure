@@ -6,19 +6,17 @@ package LeetCode;
  * @desc:二叉树的最大路径和（递归）
  */
 public class Problem124 {
+    int maxSum;
     public int maxPathSum(TreeNode root) {
-        int[] res = {root.val};
-        dfs(root,res);
-        return res[0];
+        maxSum = root.val;
+        dfs(root);
+        return maxSum;
     }
-    private int dfs(TreeNode root,int[] res) {
-        if (root == null) {
-            return 0;
-        }
-        int lmax = Math.max(0,dfs(root.left,res));
-        int rmax = Math.max(0,dfs(root.right,res));
-        res[0] = Math.max(res[0],lmax + rmax + root.val);
-        return root.val + Math.max(lmax,rmax);
-
+    private int dfs(TreeNode root) {
+        if (root == null) return 0;
+        int Lmax = Math.max(0,dfs(root.left));
+        int Rmax = Math.max(0,dfs(root.right));
+        maxSum = Math.max(Lmax + Rmax + root.val,maxSum);
+        return root.val + Math.max(Lmax,Rmax);
     }
 }

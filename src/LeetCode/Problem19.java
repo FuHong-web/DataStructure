@@ -1,5 +1,7 @@
 package LeetCode;
 
+import com.sun.source.tree.BreakTree;
+
 /**
  * @author: Yan Tong xue
  * @Created:2026/3/29 10:23
@@ -7,19 +9,18 @@ package LeetCode;
  */
 public class Problem19 {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode dummy=new ListNode(0,head);
-        ListNode left=dummy;
-        ListNode right=head;
-        //right右走n步
-        while (n>0 && right!=null){
-            right=right.next;
-            n--;
+        ListNode dummy = new ListNode(0, head);
+        ListNode cur = dummy;
+        ListNode temp = head;
+        int len = 0;
+        while (temp != null) {
+            len += 1;
+            temp = temp.next;
         }
-        while (right!=null){
-            left=left.next;
-            right= right.next;
+        for (int i = 0;i< len -i;i++) {
+            cur = cur.next;
         }
-        left.next=left.next.next;
+        cur.next = cur.next.next;
         return dummy.next;
     }
 }
