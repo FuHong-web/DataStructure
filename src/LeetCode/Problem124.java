@@ -7,16 +7,18 @@ package LeetCode;
  */
 public class Problem124 {
     int maxSum;
+
     public int maxPathSum(TreeNode root) {
         maxSum = root.val;
         dfs(root);
         return maxSum;
     }
+
     private int dfs(TreeNode root) {
         if (root == null) return 0;
-        int Lmax = Math.max(0,dfs(root.left));
-        int Rmax = Math.max(0,dfs(root.right));
-        maxSum = Math.max(Lmax + Rmax + root.val,maxSum);
-        return root.val + Math.max(Lmax,Rmax);
+        int Lmax = Math.max(0, dfs(root.left));
+        int Rmax = Math.max(0, dfs(root.right));
+        maxSum = Math.max(Lmax + Rmax + root.val, maxSum);
+        return root.val + Math.max(Lmax, Rmax);
     }
 }

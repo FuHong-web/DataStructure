@@ -10,37 +10,12 @@ import java.util.List;
  */
 public class Problem236 {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        List<TreeNode> pathP = new ArrayList<>();
-        List<TreeNode> pathQ = new ArrayList<>();
-
-        // 分别找到根到p、根到q的路径
-        dfs(root, p, new ArrayList<>(), pathP);
-        dfs(root, q, new ArrayList<>(), pathQ);
-
-        // 找两条路径最后一个相同的节点
-        TreeNode res = null;
-        int minLen = Math.min(pathP.size(), pathQ.size());
-        for (int i = 0; i < minLen; i++) {
-            if (pathP.get(i) == pathQ.get(i)) {
-                res = pathP.get(i);
-            } else {
-                break;
-            }
+        if(root == null || root==p || root==q){
+            return root;
         }
-        return res;
-    }
-
-    private void dfs(TreeNode node, TreeNode target, List<TreeNode> path, List<TreeNode> result) {
-        if (node == null || !result.isEmpty()) {
-            return; // 已找到就提前返回
-        }
-        path.add(node);
-        if (node == target) {
-            result.addAll(path); // 找到目标，保存路径
-            return;
-        }
-        dfs(node.left, target, path, result);
-        dfs(node.right, target, path, result);
-        path.remove(path.size() - 1); // 回溯
+        TreeNode left = lowestCommonAncestor(root.left,p,q);
+        TreeNode right= lowestCommonAncestor(root.right,p,q);
+        if (left!=null && right!=null) return root;
+        return left!=null ? left:right;
     }
 }
