@@ -5,12 +5,21 @@ package LeetCode;
  * @Created:2026/3/22 22:24
  * @desc:力扣第198题:打家劫舍（动态规划）
  * dp[n] = MAX( dp[n-1], dp[n-2] + num )
+ * dp[i]代表前 i 间房，需要下标 0~n，所以长度 n+1
+ * dp [0]、dp [1] 作为基础条件提前初始化完成
+ * 剩下 i=2 ~ n 需要循环推导，因此循环从 i=2 启动
+ *
+ * dp[i] = 前 i 间房
+ * 那这「第 i 间房子」，是整个前 i 间里最后那一间
+ * 它在 nums 里的下标 = i - 1
+ * 👉 第 i 间房 = nums [i-1]
  */
 public class Problem198 {
     public int rob(int[] nums) {
         int n=nums.length;
         //dp数组长度为1.dp[0]表示表示0间房 dp[1]表示第1间房
         int[] dp=new int[n+1];
+        dp[0] = 0;
         if (n>0){
             dp[1]=nums[0];
         }

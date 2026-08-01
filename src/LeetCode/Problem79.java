@@ -3,6 +3,16 @@ package LeetCode;
 /**
  * @author: Yan Tong xue
  * @Created:2026/3/30 23:27
+ *
+ * visit[row][col] = true;  // 标记当前格子已被占用
+ *
+ * // 向四个方向探索
+ * res |= dfs(下);  // 在 dfs(下) 中，当前格子被标记为 true
+ * res |= dfs(右);  // 所以不会走回头路
+ * res |= dfs(上);
+ * res |= dfs(左);
+ *
+ * visit[row][col] = false;  // 探索完成，释放
  * @desc:力扣第79题：单词搜索（回溯）
  */
 public class Problem79 {

@@ -1,13 +1,9 @@
-package DifficultProblem;
+package LeetCode_Revice3.dongtaiguihua;
 
 import java.util.Stack;
-
-/**
- * @author: Yan Tong xue
- * @Created:2026/6/14 17:00用栈匹配所有有效的括号对，标记它们的位置，然后找最长连续被标记的区间。
- * @desc:最长有效括号
- */
-public class P32 {
+//用栈匹配所有有效的括号对，标记它们的位置，然后找最长连续被标记的区间
+/*最长得有效括号*/
+public class p32 {
     public int longestValidParentheses(String s) {
         Stack<Integer> stack = new Stack<>();
         boolean[] mark = new boolean[s.length()];

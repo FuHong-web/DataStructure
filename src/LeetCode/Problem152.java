@@ -11,10 +11,10 @@ public class Problem152 {
         int mx=nums[0];
         int ans=mx;
         for (int i = 1;i < nums.length;i++) {
-            int curr = nums[i];
-            int a = curr;
-            int b = curr * mn;
-            int c = curr * mx;
+            int cur = nums[i];
+            int a = cur;
+            int b = cur * mn;
+            int c = cur * mx;
             int newMn = Math.min(a,Math.min(b,c));
             int newMx = Math.max(a,Math.max(b,c));
             mn=newMn;
