@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+/*
+* i 现在所处的这个字符，属于当前片段，先计入长度，再更新边界，保证长度统计不会漏字符
+*
+*
+* */
 /**
  * @author: Yan Tong xue
  * @Created:2026/4/20 23:06
@@ -24,7 +28,7 @@ public class Problem763 {
         int maxRight = 0;
 
         for (int i = 0;i<s.length();i++){
-            segLen++;
+            segLen++;//i 现在所处的这个字符，属于当前片段，先计入长度，再更新边界，保证长度统计不会漏字符
             maxRight = Math.max(maxRight, uRight.get(s.charAt(i)));
             // 到达边界，添加 片段长度，不是下标！
             if (i == maxRight) {

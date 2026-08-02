@@ -7,7 +7,7 @@ import java.util.Stack;
  * @Created:2026/3/9 22:45
  * @desc:力扣第20题：有效的括号
  */
-public class Problem20 {
+public class  Problem20 {
     public boolean isValid(String s) {
         // 空字符串视为有效
         if (s.isEmpty()) {

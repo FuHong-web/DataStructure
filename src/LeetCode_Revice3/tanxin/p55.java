@@ -1,11 +1,6 @@
-package LeetCode;
-
-/**
- * @author: Yan Tong xue
- * @Created:2026/3/22 21:58
- * @desc:力扣第55题：跳跃游戏（贪心算法）
- */
-public class Problem55 {
+package LeetCode_Revice3.tanxin;
+/*跳崖游戏*/
+public class p55 {
     public boolean canJump(int[] nums) {
         int maxRecah = 0;
         int n = nums.length;
@@ -13,7 +8,7 @@ public class Problem55 {
             if (i>maxRecah){
                 return false;
             }
-            maxRecah = Math.max(maxRecah,i+nums[i]);
+                maxRecah = Math.max(maxRecah,i+nums[i]);
             if (maxRecah > n-1) {
                 return true;
             }
