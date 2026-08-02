@@ -1,13 +1,8 @@
-package LeetCode;
-
+package LeetCode_Revice3.zhan;
+/*柱状图的最大矩阵*/
 import java.util.Stack;
 
-/**
- * @author: Yan Tong xue
- * @Created:2026/4/28 23:41
- * @desc:柱状图的最大矩阵（栈）
- */
-public class Problem84 {
+public class p84 {
     public int largestRectangleArea(int[] heights) {
         Stack<Integer> st = new Stack<>();
         int n = heights.length;
@@ -18,10 +13,12 @@ public class Problem84 {
             right[i] = n;
         }
         for (int i = 0; i < n; i++) {
+            //右边界
             while (!st.isEmpty() && heights[i] < heights[st.peek()]){
                 int index =st.pop();
                 right[index] = i;
             }
+            //左边界
             if(!st.isEmpty()) {
                 left[i] = i;
             }
@@ -34,4 +31,5 @@ public class Problem84 {
             maxArea = Math.max(area,maxArea);
         }
         return maxArea;
-}}
+    }
+}

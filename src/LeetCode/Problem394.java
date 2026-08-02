@@ -17,14 +17,6 @@ public class Problem394 {
 
         for (char c : s.toCharArray()) {
             if (Character.isDigit(c)) {
-                // 处理数字（支持多位数）
-                /*初始 curNum = 0
-                读到 '1'
-                curNum = 0 * 10 + 1 = 1
-                读到 '0'
-                curNum = 1 * 10 + 0 = 10
-                读到 '0'
-                curNum = 10 * 10 + 0 = 100*/
                 curNum = curNum * 10 + (c - '0');
             } else if (c == '[') {
                 // 遇到左括号：保存当前字符串和数字
@@ -36,7 +28,7 @@ public class Problem394 {
             } else if (c == ']') {
                 // 弹出数字和之前保存的字符串
                 int k = numStack.pop();
-                String prevStr = strStack.pop(); // ✅ 你漏掉了这一行！
+                String prevStr = strStack.pop();
                 // 把当前字符串重复 k 次
                 StringBuilder tmp = new StringBuilder();
                 for (int i = 0; i < k; i++) {
