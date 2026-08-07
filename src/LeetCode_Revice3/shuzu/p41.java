@@ -1,13 +1,9 @@
-package LeetCode;
+package LeetCode_Revice3.shuzu;
 
 import java.util.Arrays;
 
-/**
- * @author: Yan Tong xue
- * @Created:2026/4/25 10:59
- * @desc:缺失的第一个正整数（数组交换）
- */
-public class Problem41 {
+/*数组缺失的第一个正数*/
+public class p41 {
     public int firstMissingPositive(int[] nums) {
         Arrays.sort(nums);
         int ans = 1;

@@ -1,14 +1,8 @@
-package LeetCode;
-
-import java.util.WeakHashMap;
-
-/**
- * @author: Yan Tong xue
- * @Created:2026/3/22 21:15
- * @desc:盛最多水的容器(双指针)
- * 每次移动较短的一侧，主动放弃 “以该短边为高度的所有更短 x 轴组合”，因为这些组合不可能更优。
- */
-public class Problem11 {
+package LeetCode_Revice3.shuangzhizhen;
+/*乘最多水的容器*/
+/*盛水容器：看当下两根柱子，算矩形面积，抛弃矮柱子找更大容器；
+接雨水：记两边最高围墙，围墙哪边矮，就算当前这一列能存多少雨水。*/
+public class p11 {
     public int maxArea(int[] height) {
         int left=0;
         int right = height.length-1;

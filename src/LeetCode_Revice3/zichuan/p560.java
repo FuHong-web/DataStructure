@@ -1,15 +1,8 @@
-package LeetCode_Revice1.zichuan;
+package LeetCode_Revice3.zichuan;
 
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author: Yan Tong xue
- * @Created:2026/6/7 20:47
- * @desc:和为k的子数组
- * 核心逻辑（一句话记住）
- * 以每个位置为结尾，往左不断累加，遇到和为 k 就计数。
- */
 public class p560 {
     public int subarraySum(int[] nums, int k) {
         Map<Integer,Integer> map = new HashMap<>();
@@ -25,5 +18,4 @@ public class p560 {
         }
         return count;
     }
-
 }

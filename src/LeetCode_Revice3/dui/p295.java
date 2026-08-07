@@ -1,20 +1,15 @@
-package LeetCode;
-
+package LeetCode_Revice3.dui;
+/*数据流的中位数*/
 import java.util.PriorityQueue;
 
-/**
- * @author: Yan Tong xue
- * @Created:2026/5/5 21:38
- * @desc:力扣第295题（大/小堆）
- */
-public class Problem295 {
+public class p295 {
     class MedianFinder {
-      private PriorityQueue<Integer> left;
-      private PriorityQueue<Integer> right;
+        private PriorityQueue<Integer> left;
+        private PriorityQueue<Integer> right;
 
         public MedianFinder() {
-           left = new PriorityQueue<>((a,b)->b-a);
-           right = new PriorityQueue<>();
+            left = new PriorityQueue<>((a,b)->b-a);
+            right = new PriorityQueue<>();
         }
 
         public void addNum(int num) {

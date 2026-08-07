@@ -1,16 +1,11 @@
-package LeetCode;
+package LeetCode_Revice3.shuzu;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 
-/**
- * @author: Yan Tong xue
- * @Created:2026/1/21 23:23
- * @desc:力扣第56题：合并区间
- */
-public class Problem56 {
+/*合并区间*/
+public class p56 {
     public int[][] merge(int[][] intervals) {
         Arrays.sort(intervals);
         List<int[]> res= new ArrayList<>();

@@ -7,33 +7,16 @@ package LeetCode;
  */
 public class Problem283_1 {
 
-    //方法一：类冒泡排序
+
     public void moveZeroes1(int[] nums) {
-        int index=0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i]!=0){
-                int temp=nums[i];
-                nums[i]=nums[index];
-                nums[index]=temp;
-                index++;
+        int left = 0;
+        for(int right = 0;right<nums.length;right++){
+            if(nums[right] != 0){
+                nums[left++] = nums[right];
             }
         }
-    }
-    //双指针
-    public void moveZeroes2(int[] nums){
-        int left=0;
-        int right=0;
-        while (right<nums.length){
-            if (nums[right]!=0){
-                swap(nums,left,right);
-                left++;
-            }
-            right++;
+        while (left<nums.length) {
+            nums[left++] = 0;
         }
-    }
-    private void swap(int[] nums,int left,int right){
-        int temp=nums[left];
-        nums[left]=nums[right];
-        nums[right]=temp;
     }
 }

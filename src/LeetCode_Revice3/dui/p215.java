@@ -1,14 +1,9 @@
-package LeetCode;
+package LeetCode_Revice3.dui;
 
-import java.util.Arrays;
 import java.util.PriorityQueue;
 
-/**
- * @author: Yan Tong xue
- * @Created:2026/3/9 23:18
- * @desc:力扣第215题：数组中的第 K 个最大元素
- */
-public class Problem215 {
+/*数组中第k大的元素*/
+public class p215 {
     public int findKthLargest(int[] nums, int k) {
         PriorityQueue<Integer> heap = new PriorityQueue<>();
         for(int num : nums) {
