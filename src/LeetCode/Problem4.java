@@ -1,5 +1,22 @@
 package LeetCode;
-
+/*
+* 先牢牢记住前提：
+我们已经固定了 i + j = half = (m+n+1)/2，j 完全由 i 决定，只要 i 确定，j 就被唯一锁死。
+四个值：left1、right1、left2、right2。
+1. 合法条件：left1 <= right2 && left2 <= right1
+切割有效，满足：
+左半边所有数字 ≤ 右半边所有数字。
+此时直接计算中位数，结束循环。
+2. 整个区间只会出现两种不合法的情况
+两个不等式 left1 <= right2、left2 <= right1，只会有两种不合法组合：
+情况 A：left1 > right2
+也就是：nums1 左边的最大值，比 nums2 右边最小值还要大。
+含义：nums1 左边元素太大了，分割线 i 需要往左收缩（hi = i - 1），从 nums1 左侧拿走一部分元素丢去右边。
+情况 B：left2 > right1
+也就是：nums2 左边的最大值，比 nums1 右边最小值还要大。
+结合 i+j=定值 的关系：
+left2 > right1 等价于 left1 <= right2 必然成立。
+这种情况，需要把 nums1 的分割线往右移动（lo = i + 1），多拿一些 nums1 的元素放到左侧，从而让 nums2 左侧少拿元素、修正 left2。*/
 /**
  * @author: Yan Tong xue
  * @Created:2026/4/26 20:22
@@ -7,31 +24,35 @@ package LeetCode;
  */
 public class Problem4 {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        int n = nums1.length + nums2.length;  // 总长度
-        if (n % 2 == 0) {  // 偶数个元素
-            int left = find(nums1, 0, nums2, 0, n / 2);    // 找第 n/2 小
-            int right = find(nums1, 0, nums2, 0, n / 2 + 1); // 找第 n/2+1 小
-            return (left + right) / 2.0;  // 平均值
-        } else {  // 奇数个元素
-            return find(nums1, 0, nums2, 0, n / 2 + 1); // 找正中间那个
-        }
-    }
-    private int find(int nums1[], int i ,int[] nums2 , int j, int k) {
-        if (nums1.length - i > nums2.length - j) {
-            return find(nums2 , j ,nums1 , i , k);
-        }
-        if (nums1.length == i) {
-            return nums2[j + k - 1];
-        }
-        if (k == 1) {
-            return Math.min(nums1[i],nums2[j]);
-        }
-        int idx1 = Math.min(nums1.length,i + k / 2);
-        int idx2 = j + k - k / 2;
-        if (nums1[idx1 - 1] < nums2[idx2 - 1]) {
-            return find(nums1,idx1,nums2,j,k - (idx1 - i));
-        }else {
-            return find(nums1,i,nums2,idx2,k - (idx2 - j));
-        }
+      int m = nums1.length;
+      int n = nums2.length;
+      if(m>n){
+          int[] temp = nums1;
+          nums1 = nums2;
+          nums2 = temp;
+      }
+      int low = 0;
+      int high = m;
+      while (low<=high){
+          int i= (low+high) / 2;
+          int j = (m+n +1) -i;
+          int left1 = (i==0) ? Integer.MIN_VALUE : nums1[i-1];
+          int right1 = (i==m) ? Integer.MAX_VALUE : nums1[i];
+          int left2 = (j==0) ? Integer.MIN_VALUE : nums2[j-1];
+          int right2 = (i==n) ? Integer.MAX_VALUE : nums2[j];
+
+          if(left1 <= right2 && left2 <= right1){
+              if((m+n) % 2== 0){
+                  return (Math.max(left1,left2)+Math.min(right1,right2));
+              }else {
+                  return Math.max(left1,left2);
+              }
+          } else if (left1 > right2) {
+                high = i-1;
+          }else {
+              low = j+1;
+          }
+      }
+      return 0.0;
     }
 }

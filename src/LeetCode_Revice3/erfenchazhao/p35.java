@@ -2,6 +2,16 @@ package LeetCode_Revice3.erfenchazhao;
 /*搜索插入位置*/
 public class p35 {
     public int searchInsert(int[] nums, int target) {
-        i
+        int left = 0;
+        int right = nums.length;
+        while (left < right){
+            int mid = left+(right-left)/2;
+            if(nums[mid] > target){
+                right= mid;
+            }else {
+                left = mid+1;
+            }
+        }
+        return left;
     }
 }
