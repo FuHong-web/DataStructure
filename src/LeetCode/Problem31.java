@@ -7,21 +7,27 @@ package LeetCode;
  */
 public class Problem31 {
     public void nextPermutation(int[] nums) {
-        int n = nums.length;
-        int k = n - 1;
-        while (k > 0 && nums[k-1] >= nums[k]) {
-            k--;
+        // 1. i 从倒数第二位开始向前遍历，目的比较 nums[i] 和 nums[i+1]，防止i+1越界
+        int i = nums.length - 2;
+        // 持续向前，找到第一个下标 i，满足 nums[i] < nums[i+1]
+        // 循环结束后，[i+1, 末尾] 一定是降序序列
+        while (i >= 0 && nums[i] >= nums[i+1]) {
+            i--;
         }
-        if (k <= 0) {
-            reverse(nums,0,n-1);
-        }else {
-            int t = n-1;
-            while (nums[t] <= nums[k-1]){
-                t--;
+
+        // i >= 0 代表找到了拐点，存在更大的排列
+        if (i >= 0) {
+            // j 从数组最后一位向前查找
+            int j = nums.length - 1;
+            // 在右侧降序区间，找到最靠右、且大于nums[i]的元素（大于nums[i]里最小的值）
+            while (nums[j] <= nums[i]) {
+                j--;
             }
-            swap(nums,t,k-1);
-            reverse(nums,k,n-1);
+            // 交换i、j位置的值，让i位置数字变大，整体排列变大
+            swap(nums, i, j);
         }
+
+        reverse(nums, i+1, nums.length-1);
     }
     private void reverse(int[] nums,int left,int right){
         while (left < right) {
