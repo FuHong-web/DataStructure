@@ -16,8 +16,8 @@ public class Problem2 {
            int sum = val1 + val2 + jin;
            jin = sum / 10;
            int ge = sum % 10;
-           tail.next = new ListNode(ge);
-           tail = tail.next;
+           tail.next = new ListNode(ge);// 把新节点挂到 tail 的后面
+           tail = tail.next;// tail指针向后移动一步
            if (l1 != null) l1 = l1.next;
            if (l2 != null) l2= l2.next;
        }

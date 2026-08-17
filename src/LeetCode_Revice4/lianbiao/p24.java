@@ -1,11 +1,9 @@
-package LeetCode;
+package LeetCode_Revice4.lianbiao;
 
-/**
- * @author: Yan Tong xue
- * @Created:2026/3/29 10:53
- * @desc:两两交换链表中的结点(虚拟结点)
- */
-public class Problem24 {
+import LeetCode.ListNode;
+
+/*两两交换链表的节点*/
+public class p24 {
     public ListNode swapPairs(ListNode head) {
         if (head == null || head.next == null) return head;
         ListNode second = head.next;
