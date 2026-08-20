@@ -11,20 +11,19 @@ import java.util.Queue;
 public class p199 {
     public List<Integer> rightSideView(TreeNode root) {
         List<Integer> res = new ArrayList<>();
+        if (root == null) return res;
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         while (!queue.isEmpty()) {
             int quelen = queue.size();
             TreeNode rightNode = null;
-            for (int i= 0;i<quelen;i++) {
+            for (int i = 0; i < quelen; i++) {
                 TreeNode cur = queue.poll();
-                if (cur!=null) {
-                    rightNode = cur;
-                    if (cur.left!=null) queue.add(cur.left);
-                    if (cur.right!= null) queue.add(cur.right);
-                }
+                rightNode = cur;
+                if (cur.left != null) queue.add(cur.left);
+                if (cur.right != null) queue.add(cur.right);
             }
-            if (rightNode!=null) res.add(rightNode.val);
+            res.add(rightNode.val);
         }
         return res;
     }

@@ -5,27 +5,29 @@ import java.util.List;
 
 /*组合总和*/
 public class p39 {
-    class Solution {
+
         public List<List<Integer>> combinationSum(int[] candidates, int target) {
             List<List<Integer>> res = new ArrayList<>();
             List<Integer> temp = new ArrayList<>();
-            help(res,temp,candidates,target,0);
+            help(res, temp, candidates, target, 0);
             return res;
         }
-        private void help(List<List<Integer>> res,List<Integer> temp,
-                          int[] candidates,int target,int start){
+
+        private void help(List<List<Integer>> res, List<Integer> temp, int[] candidates, int target, int start){
             if(target == 0){
                 res.add(new ArrayList<>(temp));
                 return;
             }
-            if(target < 0) return;
-
-            for(int i= 0;i<candidates.length;i++) {
+            if(target < 0){
+                return;
+            }
+            // i从start开始，不回头，避免重复组合
+            for(int i = start; i < candidates.length; i++){
                 temp.add(candidates[i]);
-                help(res,temp,candidates,target-candidates[i],i);
+                // 下一层依旧从i开始，允许重复选取当前元素
+                help(res, temp, candidates, target - candidates[i], i);
                 temp.remove(temp.size()-1);
             }
         }
     }
 
-}

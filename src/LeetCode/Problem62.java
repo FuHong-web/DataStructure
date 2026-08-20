@@ -27,5 +27,4 @@ public class Problem62 {
         return result[m-1][n-1];//返回右下角位置的路径数即可
     }
 
-
 }

@@ -26,4 +26,5 @@ public class Problem322 {
 
         // 如果dp[amount]仍然是初始值，说明无法组成该金额，返回-1
         return dp[amount] > amount ? -1 : dp[amount];
-    }}
+    }
+}

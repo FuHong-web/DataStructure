@@ -20,5 +20,6 @@ public class p46 {
             help(res,temp,nums);
             temp.remove(temp.size()-1);
         }
-    }}
+    }
+    }
 }

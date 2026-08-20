@@ -27,7 +27,6 @@ public class p22 {
             help(n,left,right+1,res,temp);
             temp.deleteCharAt(temp.length()-1);
         }
-
     }
 
 }
