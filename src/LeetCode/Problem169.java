@@ -1,6 +1,9 @@
 package LeetCode;
 
+import javax.print.DocFlavor;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author: Yan Tong xue
@@ -9,7 +12,13 @@ import java.util.Arrays;
  */
 public class Problem169 {
     public int majorityElement(int[] nums) {
-        Arrays.sort(nums);
-        return nums[nums.length / 2];
+        Map<Integer,Integer> map = new HashMap<>();
+        for (int num : nums) {
+            map.put(num,map.getOrDefault(num,0)+1);
+            if(map.get(num) > nums.length /2){
+                return num;
+            }
+        }
+        return -1;
     }
 }

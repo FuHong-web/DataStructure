@@ -7,22 +7,21 @@ package LeetCode;
  */
 public class Problem42 {
     public int trap(int[] height) {
-        int left = 0;
-        int right = height.length-1;
-        int maxL = height[left];
-        int maxR = height[right];
-        int res = 0;
-        while (left <= right) {
-            maxL = Math.max(maxL,height[left]);
-            maxR = Math.max(maxR,height[right]);
-            if (maxL < maxR) {
-                res += (maxL - height[left]);
-                left++;
-            }else {
-                res += (maxR - height[right]);
-                right--;
-            }
-        }
-        return res;
-    }
-}
+      int left = 0;
+      int right = height.length-1;
+      int lmax = height[left];
+      int rmax = height[right];
+      int ans = 0;
+      while (left < right){
+          lmax = Math.max(lmax,height[left]);
+          rmax = Math.max(rmax,height[right]);
+          if(lmax < rmax){
+              ans += (lmax - height[left]);
+              left++;
+          }else {
+              ans += (rmax - height[right]);
+              right--;
+          }
+      }
+      return ans;
+}}

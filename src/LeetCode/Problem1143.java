@@ -5,8 +5,7 @@ package LeetCode;
  * @Created:2026/4/12 16:29
  * @desc:
  */
-public class Problem1143
-{
+public class Problem1143 {
     public int longestCommonSubsequence(String text1, String text2) {
         int m = text1.length();
         int n = text2.length();

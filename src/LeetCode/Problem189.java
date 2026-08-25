@@ -7,11 +7,11 @@ package LeetCode;
  */
 public class Problem189 {
     public void rotate(int[] nums, int k) {
-        int n=nums.length;
-        int[] newarr = new int[n];
-        for (int i=0;i<n;i++){
-            newarr[(i+k)%n]=nums[i];
+        int n = nums.length;
+        int[] temp = new int[n];
+        for (int i = 0; i < n; i++) {
+            temp[(i+k)%n] = nums[i];
         }
-        System.arraycopy(newarr,0,nums,0,n);
+        System.arraycopy(temp,0,nums,0,n);
     }
 }

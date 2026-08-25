@@ -9,11 +9,11 @@ package LeetCode;
  */
 public class Problem121 {
     public int maxProfit(int[] prices) {
-        int cost=Integer.MAX_VALUE;
-        int profit=0;
+        int cost = Integer.MAX_VALUE;
+        int profit = 0;
         for (int price : prices) {
-            cost=Math.min(cost,price);//不断找最小的买入价格
-            profit=Math.max(profit,price-cost);//不断更新最大利润
+            cost = Math.min(cost,price);
+            profit = Math.max(profit,price-cost);
         }
         return profit;
     }
