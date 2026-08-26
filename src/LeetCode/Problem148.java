@@ -18,6 +18,8 @@ public class Problem148 {
             slow = slow.next;
             fast = fast.next.next;
         }
+        //- `slow`：**左半段的最后一个节点**
+        //- `mid`：**右半段的第一个节点**
         ListNode mid = slow.next;
         slow.next = null;
 
