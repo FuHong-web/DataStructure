@@ -1,4 +1,4 @@
-package LeetCode_Revice3.tu;
+package LeetCode_Revice4.tu;
 /*岛屿数量*/
 public class p200 {
     public int numIslands(char[][] grid) {
@@ -23,5 +23,4 @@ public class p200 {
         dfs(grid,i,j+1);
         dfs(grid,i,j-1);
     }
-
 }

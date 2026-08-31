@@ -1,5 +1,8 @@
 package LeetCode;
-
+/*
+* 遍历本层每一个节点：
+- 只要节点不为 null，就更新`rightNode`为当前节点；**遍历结束后 rightNode 就是本层最右侧节点**
+* */
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,21 +15,21 @@ import java.util.Queue;
  */
 public class Problem199 {
         public List<Integer> rightSideView(TreeNode root) {
-            List<Integer> res = new ArrayList<>();
-            Queue<TreeNode> q = new LinkedList<>();
-            q.offer(root);
-            while (!q.isEmpty()) {
-                int levelSize = q.size();
+            List<Integer> res= new ArrayList<>();
+            Queue<TreeNode> queue = new LinkedList<>();
+            if(root != null) queue.add(root);
+            while (!queue.isEmpty()){
+                int len = queue.size();
                 TreeNode rightNode = null;
-                for (int i = 0; i < levelSize; i++) {
-                    TreeNode cur = q.poll();
-                    if (cur != null) {
-                        rightNode = cur;
-                        q.offer(cur.left);
-                        q.offer(cur.right);
-                    }
+                for (int i = 0; i < len; i++) {
+                    TreeNode cur = queue.poll();
+                    rightNode = cur;
+                    if(cur!=null){
+                    if(cur.left!= null) queue.add(cur.left);
+                    if(cur.right!= null) queue.add(cur.right);
                 }
-                if (rightNode != null) {
+                }
+                if(rightNode!=null){
                     res.add(rightNode.val);
                 }
             }

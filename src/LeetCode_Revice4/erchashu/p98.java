@@ -7,7 +7,7 @@ import javax.imageio.plugins.jpeg.JPEGImageReadParam;
 /*验证二叉搜索树*/
 public class p98 {
     public boolean isValidBST(TreeNode root) {
-        return isCche(root,Long.MIN_VALUE,Long.MAX_VALUE);
+        return isCche(root,Long.MIN_VALUE,Long.MAX_VALUE);//根节点没有边界约束
     }
     private boolean isCche(TreeNode node,long lower,long up){
         if(node == null) {
