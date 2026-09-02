@@ -12,16 +12,15 @@ public class p78 {
         return res;
     }
     private void help(List<List<Integer>> res,List<Integer> temp,int[] nums,int index){
-        if (index == nums.length) {
-            res.add(new ArrayList<>(temp));
-            return;
-        }
-         //不选
-        help(res,temp,nums,index+1);
+     if(index == nums.length){
+         res.add(new ArrayList<>(temp));
+         return;
+     }
 
-        //选
-        temp.add(nums[index]);
-        help(res,temp,nums,index+1);
-        temp.remove(temp.size()-1);
+     help(res,temp,nums,index+1);
+
+     temp.add(nums[index]);
+     help(res,temp,nums,index+1);
+     temp.remove(temp.size()-1);
     }
 }

@@ -21,11 +21,9 @@ public class p39 {
             if(target < 0){
                 return;
             }
-            // i从start开始，不回头，避免重复组合
-            for(int i = start; i < candidates.length; i++){
+            for(int i = start;i <candidates.length;i++){
                 temp.add(candidates[i]);
-                // 下一层依旧从i开始，允许重复选取当前元素
-                help(res, temp, candidates, target - candidates[i], i);
+                help(res,temp,candidates,target-candidates[i],i+1);
                 temp.remove(temp.size()-1);
             }
         }
