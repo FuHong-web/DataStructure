@@ -7,9 +7,6 @@ package LeetCode;
  */
 public class Problem300 {
     public int lengthOfLIS(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
         int n = nums.length;
         // dp数组全部初始化为1，对应vector<int> dp(nums.size(), 1)
         int[] dp = new int[n];
