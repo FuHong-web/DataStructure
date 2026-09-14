@@ -7,15 +7,14 @@ package LeetCode_Revice2.shuzu;
  */
 public class p53 {
     public int maxSubArray(int[] nums) {
-        int maxSub = nums[0];
-        int curSub = 0;
-        for (int i = 0;i < nums.length;i++) {
-            if (nums[i] < 0) {
-                curSub = 0;
-            }
-            curSub += nums[i];
-            maxSub = Math.max(curSub,maxSub);
+        int maxSum = nums[0];
+        int curSum = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            // 核心：选 「只取当前nums[i]」 OR 「前面的和 + nums[i]」
+            curSum = Math.max(nums[i], curSum + nums[i]);
+            maxSum = Math.max(maxSum, curSum);
         }
-        return maxSub;
+        return maxSum;
     }
+
 }
